@@ -35,6 +35,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # Git
 alias gi="git init"
 alias gs="git status"
+alias gd="git diff"
 alias gc="git clone"
 alias gcm="git commit -m"
 alias gba="git branch -a"
@@ -50,6 +51,9 @@ alias vi="vim"
 alias python="python3"
 alias pip="pip3"
 
+## Dependencies
+alias pfr="pip3 freeze > requirements.txt"
+
 # Venv
 alias venv="python3 -m venv env"
 alias svenv="source env/bin/activate"
@@ -57,6 +61,26 @@ alias svenv="source env/bin/activate"
 # Fun
 alias starwars="telnet towel.blinkenlights.nl"
 alias fcow="fortune | cowsay"
+
+# Stax
+alias s="stax"
+alias ys="yes | stax"
+
+alias bes="bundle exec stax"
+alias ybes="yes | bundle exec stax"
+
+# Bundle
+alias be="bundle exec"
+
+# AWS
+alias asr="assume-role"
+
+function installstax () {
+  chruby 2.6.6; bundle install; stax ls
+}
+
+# Emacs
+alias emacs="emacs -nw"
 
 # ECR
 function ecrlogin() {
