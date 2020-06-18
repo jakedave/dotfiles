@@ -46,8 +46,11 @@ set smartcase
 " Allow Regex search
 set magic
 
+" Turn off spellcheck by default
+set nospell
+
 " Spelling with us dictionary
-set spell spelllang=en_us
+"set spell spelllang=en_us
 
 " Map ':' to ';' because speed
 nnoremap ; :
