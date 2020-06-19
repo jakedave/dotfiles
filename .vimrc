@@ -17,6 +17,9 @@ Plugin 'tomtom/tcomment_vim'
 " Show indenting on filetype
 Plugin 'nathanaelkane/vim-indent-guides'
 
+" Minimal status bar
+Plugin 'itchyny/lightline.vim'
+
 " solarized color scheme
 Bundle 'altercation/vim-colors-solarized'
 
@@ -101,3 +104,11 @@ let mapleader=" "
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
+
+" For bug with Lightline
+set laststatus=2
+
+" Lightline colorscheme
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
