@@ -8,9 +8,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Begin vundle plugins
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Commenting with gc{motion}
+Plugin 'tomtom/tcomment_vim'
+
+" Show indenting on filetype
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" solarized color scheme
 Bundle 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
@@ -85,3 +92,12 @@ nnoremap ; :
 
 " Auto change file on outside change
 set autoread
+
+" Leader is space
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+" Use smallest visual indents
+let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 3
+let g:indent_guides_enable_on_vim_startup = 1
