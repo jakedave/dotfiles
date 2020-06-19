@@ -14,14 +14,17 @@ Plugin 'VundleVim/Vundle.vim'
 " Commenting with gc{motion}
 Plugin 'tomtom/tcomment_vim'
 
-" Show indenting on filetype
+" Show indenting on filetype with <leader>ig
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Minimal status bar
 Plugin 'itchyny/lightline.vim'
 
-" solarized color scheme
+" Solarized color scheme
 Bundle 'altercation/vim-colors-solarized'
+
+" Distraction free with :Goyo
+Plugin 'junegunn/goyo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
