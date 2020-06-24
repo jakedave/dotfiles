@@ -40,12 +40,18 @@ alias gc="git clone"
 alias gcm="git commit -m"
 alias gba="git branch -a"
 alias gpo="git push origin"
+alias ga="git add"
 
 # Processes
 alias p="ps aux | less"
 
 # Text Editing
 alias vi="vim"
+
+# Meta
+alias vv="vim ~/.vimrc"
+alias vba="vim ~/.bash_aliases"
+alias vt="vim ~/.tmux.conf"
 
 # Python
 alias python="python3"
@@ -57,6 +63,20 @@ alias pfr="pip3 freeze > requirements.txt"
 # Venv
 alias venv="python3 -m venv env"
 alias svenv="source env/bin/activate"
+alias d="deactivate"
+
+#TODO: Should parameterize env and requirements
+function venvinstall () {
+    if [ ! -d env ]
+    then
+        python3 -m venv env
+    fi
+    source env/bin/activate
+    if [ -f requirements.txt ]
+    then
+        pip3 install -r requirements.txt
+    fi
+}
 
 # Fun
 alias starwars="telnet towel.blinkenlights.nl"
@@ -76,7 +96,19 @@ alias be="bundle exec"
 alias asr="assume-role"
 
 function installstax () {
-  chruby 2.6.6; bundle install; stax ls
+  chruby 2.6.6
+  bundle install
+  assume-role $1 $2
+  stax ls
+}
+
+# Weechat
+function wee () {
+    echo 'Virtual environment changed!'
+    source ~/Documents/Common/env/bin/activate
+    # Prefixing with command due to an issue where this function
+    # and the command 'weechat' had the same name.
+    command weechat
 }
 
 # Emacs
@@ -97,7 +129,7 @@ function dockerpush () {
 }
 
 # VPCs
-function vpcdependencies(){
+function vpcdependencies() {
   aws ec2 describe-internet-gateways --filters 'Name=attachment.vpc-id,Values='$1 | grep InternetGatewayId
   aws ec2 describe-subnets --filters 'Name=vpc-id,Values='$1 | grep SubnetId
   aws ec2 describe-route-tables --filters 'Name=vpc-id,Values='$1 | grep RouteTableId

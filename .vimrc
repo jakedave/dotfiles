@@ -26,6 +26,9 @@ Bundle 'altercation/vim-colors-solarized'
 " Distraction free with :Goyo
 Plugin 'junegunn/goyo.vim'
 
+" Surrounding and unsurrounding with cs{char} ds{char} ys{char}
+Plugin 'tpope/vim-surround'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 
@@ -115,3 +118,6 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
+
+" Format JSON with this command
+com! FormatJSON %!python -m json.tool
