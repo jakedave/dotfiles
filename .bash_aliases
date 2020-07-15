@@ -81,6 +81,15 @@ function venvinstall () {
 # Fun
 alias starwars="telnet towel.blinkenlights.nl"
 alias fcow="fortune | cowsay"
+alias parrot="curl parrot.live"
+alias aq="asciiquarium"
+
+# For reference
+# rig                                    # generate random fake identities
+# rev <<< "go hang a salami im a lasagna hog" # palindrome
+# figlet STRING                          # print ascii bubble text
+# lolcat                                 # rainbow colors (gem install lolcat)
+# curl http://wttr.in/ann_arbor          # ascii weather report
 
 # Stax
 alias s="stax"
