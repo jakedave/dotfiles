@@ -42,6 +42,11 @@ alias gba="git branch -a"
 alias gpo="git push origin"
 alias ga="git add"
 
+# Arcadia
+alias flycatcher="cd ~/Documents/Github/flycatcher"
+alias nutcracker="cd ~/Documents/Github/nutcracker"
+alias grebe="cd ~/Documents/Github/grebe"
+
 # Processes
 alias p="ps aux | less"
 

@@ -18,3 +18,12 @@ fi
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
+
+# powerline shell https://github.com/b-ryan/powerline-shell#bash
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
