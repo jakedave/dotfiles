@@ -63,6 +63,7 @@ alias python="python3"
 alias pip="pip3"
 
 ## Dependencies
+alias pf="pip freeze"
 alias pfr="pip3 freeze > requirements.txt"
 
 # Venv
