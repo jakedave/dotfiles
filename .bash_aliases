@@ -12,6 +12,7 @@ alias exp="export -p"
 alias ls="ls -G"
 alias la="ls -AG"
 alias ll="ls -ltr"
+alias lla="ls -altr"
 
 # Directory Navigation
 alias ~="cd ~"
@@ -44,6 +45,7 @@ alias ga="git add"
 
 # Arcadia
 alias flycatcher="cd ~/Documents/Github/flycatcher"
+alias pocono="cd ~/Documents/Github/pocono-swallow"
 alias nutcracker="cd ~/Documents/Github/nutcracker"
 alias grebe="cd ~/Documents/Github/grebe"
 
@@ -63,10 +65,10 @@ alias python="python3"
 alias pip="pip3"
 
 ## Dependencies
-alias pf="pip freeze"
+alias pf="pip3 freeze"
 alias pfr="pip3 freeze > requirements.txt"
 
-# Venv
+## Venv
 alias venv="python3 -m venv env"
 alias svenv="source env/bin/activate"
 alias d="deactivate"
@@ -157,4 +159,10 @@ function vpcdependencies() {
   aws ec2 describe-vpn-connections --filters 'Name=vpc-id,Values='$1 | grep VpnConnectionId
   aws ec2 describe-vpn-gateways --filters 'Name=attachment.vpc-id,Values='$1 | grep VpnGatewayId
   aws ec2 describe-network-interfaces --filters 'Name=vpc-id,Values='$1 | grep NetworkInterfaceId
+}
+
+# Mac
+function uq() {
+  # arg is /path/to/file
+  sudo xattr -d com.apple.quarantine $1
 }
