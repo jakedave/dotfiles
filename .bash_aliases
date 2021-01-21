@@ -42,8 +42,10 @@ alias gcm="git commit -m"
 alias gba="git branch -a"
 alias gpo="git push origin"
 alias ga="git add"
+alias gl="git log"
 
 # Arcadia
+alias github="cd ~/Documents/Github"
 alias flycatcher="cd ~/Documents/Github/flycatcher"
 alias pocono="cd ~/Documents/Github/pocono-swallow"
 alias nutcracker="cd ~/Documents/Github/nutcracker"
@@ -111,11 +113,19 @@ alias be="bundle exec"
 
 # AWS
 alias asr="assume-role"
+alias av="aws-vault"
+
+awsrole () {
+        unset AWS_VAULT
+        eval $(aws-vault exec $1 -- env | grep AWS | sed -e 's/^/export\ /')
+        export AWS_PROFILE=${1} 
+        export DEFAULT_AWS_PROFILE=${1} 
+}
 
 function installstax () {
   chruby 2.6.6
   bundle install
-  assume-role $1 $2
+  awsrole $1
   stax ls
 }
 
