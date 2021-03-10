@@ -6,10 +6,17 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " Begin vundle plugins
+" Plugins installed with :PluginInstall
 call vundle#begin()
 
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" Format .md tables with <leader>tm
+Plugin 'dhruvasagar/vim-table-mode'
+
+" Show changes in git repos
+Plugin 'airblade/vim-gitgutter'
 
 " Commenting with gc{motion}
 Plugin 'tomtom/tcomment_vim'
@@ -58,7 +65,7 @@ set shiftwidth=4
 set ai
 set si
 
-" Load iletype-specific indenting
+" Load filetype-specific indenting
 "filetype indent on
 
 " Visual autocomplete menu
@@ -114,6 +121,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 " For bug with Lightline
 set laststatus=2
 
+" Dont double show mode w/ lightline
+set noshowmode
+
 " Lightline colorscheme
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -121,3 +131,39 @@ let g:lightline = {
 
 " Format JSON with this command
 com! FormatJSON %!python -m json.tool
+
+" Update gitgutter diff faster
+set updatetime=100
+
+" Fix gitgutter color scheme https://github.com/airblade/vim-gitgutter/issues/164
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
+
+" Paste like a normal human being
+set paste
+
+" Probably need to start a vim aliases file
+
+" Faster split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Make Y consistent with C and D
+nnoremap Y y$
+
+" Fast reload of vimrc
+nnoremap <Leader>r :source $MYVIMRC<CR>
+
+" Use tab and shift tab to indent and de-indent code
+nnoremap <Tab>   >>
+nnoremap <S-Tab> <<
+vnoremap <Tab>   >><Esc>gv
+vnoremap <S-Tab> <<<Esc>gv
+
+" Source vimrc on filechange
+autocmd bufwritepost .vimrc source $MYVIMRC

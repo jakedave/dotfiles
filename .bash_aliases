@@ -8,6 +8,7 @@ alias e="exit"
 alias ex="export"
 alias exp="export -p"
 
+
 # Directory Listing
 alias ls="ls -G"
 alias la="ls -AG"
@@ -21,6 +22,9 @@ alias ...="cd ../.."
 alias .3="cd ../../.."
 alias .4="cd ../../../.."
 alias .5="cd ../../../../.."
+
+alias desk="cd ~/Desktop"
+alias docs="cd ~/Documents"
 
 # Directory Creation
 alias mkdir="mkdir -p"
@@ -45,6 +49,7 @@ alias ga="git add"
 alias gl="git log"
 
 # Arcadia
+alias test="cd ~/Desktop/test"
 alias github="cd ~/Documents/Github"
 alias flycatcher="cd ~/Documents/Github/flycatcher"
 alias pocono="cd ~/Documents/Github/pocono-swallow"
@@ -61,6 +66,8 @@ alias vi="vim"
 alias vv="vim ~/.vimrc"
 alias vba="vim ~/.bash_aliases"
 alias vt="vim ~/.tmux.conf"
+
+alias vbac="vim ~/.aws/config"
 
 # Python
 alias python="python3"
@@ -94,6 +101,10 @@ alias fcow="fortune | cowsay"
 alias parrot="curl parrot.live"
 alias aq="asciiquarium"
 
+function weather () {
+    curl http://wttr.in/${1}
+}
+
 # For reference
 # rig                                    # generate random fake identities
 # rev <<< "go hang a salami im a lasagna hog" # palindrome
@@ -121,6 +132,10 @@ awsrole () {
         export AWS_PROFILE=${1} 
         export DEFAULT_AWS_PROFILE=${1} 
 }
+
+alias ardata="awsrole data-admin"
+alias ardev="awsrole dev-admin"
+alias arrw="awsrole redshiftwrite"
 
 function installstax () {
   chruby 2.6.6
@@ -176,3 +191,10 @@ function uq() {
   # arg is /path/to/file
   sudo xattr -d com.apple.quarantine $1
 }
+
+# File privleges
+function check_privleges () {
+  # arg is /path/to/file
+  stat -f %A $1
+}
+
