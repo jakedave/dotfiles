@@ -145,6 +145,12 @@ highlight GitGutterChangeDelete ctermfg=yellow
 " Paste like a normal human being
 set paste
 
+" Indent based folding
+set foldmethod=indent
+
+" Dont start folded
+set nofoldenable
+
 " Probably need to start a vim aliases file
 
 " Faster split navigation
