@@ -12,6 +12,9 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Align text
+Plugin 'junegunn/vim-easy-align'
+
 " Format .md tables with <leader>tm
 Plugin 'dhruvasagar/vim-table-mode'
 
@@ -170,6 +173,12 @@ nnoremap <Tab>   >>
 nnoremap <S-Tab> <<
 vnoremap <Tab>   >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Source vimrc on filechange
 autocmd bufwritepost .vimrc source $MYVIMRC
