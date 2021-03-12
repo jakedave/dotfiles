@@ -146,7 +146,7 @@ highlight GitGutterChangeDelete ctermfg=yellow
 set paste
 
 " Indent based folding
-set foldmethod=indent
+set foldmethod=manual
 
 " Dont start folded
 set nofoldenable
