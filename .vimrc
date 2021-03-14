@@ -12,6 +12,12 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Autocompete engine
+Plugin 'valloric/youcompleteme'
+
+" Fuzzy file finder
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " Align text
 Plugin 'junegunn/vim-easy-align'
 
@@ -38,6 +44,9 @@ Plugin 'junegunn/goyo.vim'
 
 " Surrounding and unsurrounding with cs{char} ds{char} ys{char}
 Plugin 'tpope/vim-surround'
+
+" Git commands in vim
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -146,13 +155,24 @@ highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow
 
 " Paste like a normal human being
-set paste
+" Having this on by default seems to mess with YCM
+" set paste
+
+" Make backspace work like most other places (issue with homebrew vim)
+set backspace=indent,eol,start
 
 " Indent based folding
 set foldmethod=manual
 
 " Dont start folded
 set nofoldenable
+
+" New splits to the right/bottom
+set splitbelow
+set splitright
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " Probably need to start a vim aliases file
 
@@ -171,8 +191,33 @@ nnoremap <Leader>r :source $MYVIMRC<CR>
 " Use tab and shift tab to indent and de-indent code
 nnoremap <Tab>   >>
 nnoremap <S-Tab> <<
-vnoremap <Tab>   >><Esc>gv
-vnoremap <S-Tab> <<<Esc>gv
+
+" These also mess with YCM
+" vnoremap <Tab>   >><Esc>gv
+" vnoremap <S-Tab> <<<Esc>gv
+
+" Fast tab creation
+nnoremap <Leader>T <C-W>T
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>te :tabedit 
+
+" Fast split creation
+nnoremap <Leader>s :sp<CR>
+nnoremap <Leader>v :vsp<CR>
+
+" Fast equalize split
+nnoremap <Leader>= <C-W>=
+
+" Fast select all
+nnoremap <Leader>a ggVG
+
+" Stop highlighting search
+nnoremap <Leader>n :noh<CR>
+
+" Fast hunk jump
+" Non-recursively remapping seems to break this...
+nmap <Leader>] <Plug>(GitGutterNextHunk)
+nmap <Leader>[ <Plug>(GitGutterPrevHunk)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -181,4 +226,4 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Source vimrc on filechange
-autocmd bufwritepost .vimrc source $MYVIMRC
+autocmd BufWritePost $MYVIMRC nested source $MYVIMRC

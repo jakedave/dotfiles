@@ -8,6 +8,8 @@ alias e="exit"
 alias ex="export"
 alias exp="export -p"
 
+alias tls="tmux ls"
+
 
 # Directory Listing
 alias ls="ls -G"
