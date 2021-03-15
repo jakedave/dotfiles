@@ -1,5 +1,10 @@
 # Always Forget
 ## Vim
+### General
+- `t`                            = until next (ie. `dta` == delete until next 'a')
+- `T`                            = until previous
+- `q:`                           = open commands window (see command history)
+
 ### Folding
 - `zf`                           = create fold from current selection
 - `zd`                           = delete fold from current selection
@@ -30,6 +35,8 @@
 - `<C-w>r`                       = swap left/right or top/bottom split
 
 ### Search
+- `/`                            = search forwards
+- `?`                            = search backwards
 - `:noh`                         = temporarily stop highlighting searches
 
 ### Macros
@@ -46,11 +53,30 @@
 - `:<mode>map`                   = recursively map (`:map j k`, `:map d j` == map j to k, d will also be mapped to j)
 - `:<mode>noremap`               = non-recursive map
 
+### Registers
+- `%`                            = current file
+- `#`                            = alternate file for current window
+- `:`                            = most recently executed command
+- `.`                            = last inserted text
+- `"`                            = last used register
+
+### Modes
+#### Insert
+- `<C-r>`                        = insert text from register
+- `<C-a>`                        = insert all text from last time in insert mode (`.` register)
+
 ### Plugin-specific
 #### Surround
 - `S<char>`                      = in visual select, surround with char
+- `ys<motion><char>`             = surround motion'd text with char
+
+#### Syntastic
+- `:SyntasticToggleMode`         = toggle active and passive syntax check
+- `:SyntasticCheck`              = explicitly check file
+- `:SyntasticReset`              = remove location list (I use it for this but there's probably more to it)
 
 ## Tmux
 - `:select-layout tiled`         = resize all windows to same size
+- `:kill-session -t <session>`   = kill session
 - `prefix n`                     = new window (not split)
 - `prefix c`                     = goto next window

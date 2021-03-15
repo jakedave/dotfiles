@@ -48,6 +48,18 @@ Plugin 'tpope/vim-surround'
 " Git commands in vim
 Plugin 'tpope/vim-fugitive'
 
+" Syntax checking
+Plugin 'vim-syntastic/syntastic'
+
+" More visual movment with <Leader><Leader><motion>
+Plugin 'easymotion/vim-easymotion'
+
+" Send text from one window to another 
+Plugin 'karoliskoncevicius/vim-sendtowindow'
+
+" Python code formatting with :Black
+Plugin 'psf/black'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 
@@ -174,7 +186,34 @@ set splitright
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
+" Recommended Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Don't show loc list because it's annoying
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Use python3 for syntastic...duh
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python']
+
 " Probably need to start a vim aliases file
+
+" Remap default send to window mappings
+let g:sendtowindow_use_defaults=0
+
+nmap <Leader>l <Plug>SendRight
+xmap <Leader>l <Plug>SendRightV
+nmap <Leader>h <Plug>SendLeft
+xmap <Leader>h <Plug>SendLeftV
+nmap <Leader>k <Plug>SendUp
+xmap <Leader>k <Plug>SendUpV
+nmap <Leader>j <Plug>SendDown
+xmap <Leader>j <Plug>SendDownV
 
 " Faster split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -224,6 +263,9 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Run black on file save for all python files
+autocmd BufWritePre *.py execute ':Black'
 
 " Source vimrc on filechange
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
