@@ -60,6 +60,9 @@ Plugin 'karoliskoncevicius/vim-sendtowindow'
 " Python code formatting with :Black
 Plugin 'psf/black'
 
+" Support for repeating plugin commands with .
+Plugin 'tpope/vim-repeat'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 
@@ -95,11 +98,15 @@ set si
 " Visual autocomplete menu
 set wildmenu
 
+" Ignore these types of files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/env/*
+
 " Highlight matching brackets
 set showmatch
 
-" Show line numbers
+" Show 'hybrid' numbers
 set number
+set relativenumber
 
 " Show command in bottom bar
 set showcmd
@@ -238,7 +245,7 @@ nnoremap <S-Tab> <<
 " Fast tab creation
 nnoremap <Leader>T <C-W>T
 nnoremap <Leader>tn :tabnew<CR>
-nnoremap <Leader>te :tabedit 
+nnoremap <Leader>te :tabedit
 
 " Fast split creation
 nnoremap <Leader>s :sp<CR>
@@ -253,6 +260,10 @@ nnoremap <Leader>a ggVG
 " Stop highlighting search
 nnoremap <Leader>n :noh<CR>
 
+" Fast leave insert mode
+inoremap jk <esc>
+inoremap jj <esc>:w!<cr>
+
 " Fast hunk jump
 " Non-recursively remapping seems to break this...
 nmap <Leader>] <Plug>(GitGutterNextHunk)
@@ -263,6 +274,17 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Use easy motion with search
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" Save and load folds automatically
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 " Run black on file save for all python files
 autocmd BufWritePre *.py execute ':Black'

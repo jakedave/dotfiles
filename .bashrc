@@ -12,6 +12,9 @@ source $(brew --prefix nvm)/nvm.sh
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 
+# Show time commands took place in history
+export HISTTIMEFORMAT='%F %T '
+
 # Sourced from https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
