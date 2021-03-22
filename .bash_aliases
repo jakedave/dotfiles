@@ -57,6 +57,14 @@ alias flycatcher="cd ~/Documents/Github/flycatcher"
 alias pocono="cd ~/Documents/Github/pocono-swallow"
 alias nutcracker="cd ~/Documents/Github/nutcracker"
 alias grebe="cd ~/Documents/Github/grebe"
+alias snowflake=" cd ~/Documents/Github/Snowflake"
+
+function flycatchersetup () {
+    # args are nutcracker_branch, ssm_env
+    export NUTCRACKER_BRANCH="$1"
+    export SSM_ENV="$2"
+    export FLYCATCHER_LOCAL_MODE="true"
+}
 
 # Processes
 alias p="ps aux | less"

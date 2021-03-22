@@ -28,7 +28,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'airblade/vim-gitgutter'
 
 " Commenting with gc{motion}
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 
 " Show indenting on filetype with <leader>ig
 Plugin 'nathanaelkane/vim-indent-guides'
