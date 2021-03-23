@@ -136,6 +136,7 @@ set nospell
 
 " Map ':' to ';' because speed
 nnoremap ; :
+vnoremap ; :
 
 " Auto change file on outside change
 set autoread

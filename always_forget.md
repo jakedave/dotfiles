@@ -137,6 +137,7 @@
 - `:kill-session -t <session>`                = kill session
 - `prefix n`                                  = new window (not split)
 - `prefix c`                                  = goto next window
+- `tmux attach -t <number>`                   = connect to running tmux session with number
 
 ## Python
 ### pip
