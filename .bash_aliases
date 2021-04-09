@@ -77,6 +77,8 @@ alias vv="vim ~/.vimrc"
 alias vba="vim ~/.bash_aliases"
 alias vt="vim ~/.tmux.conf"
 
+alias vac="vim ~/.aws/config"
+
 alias vbac="vim ~/.aws/config"
 
 # Python
@@ -196,6 +198,11 @@ function vpcdependencies() {
   aws ec2 describe-network-interfaces --filters 'Name=vpc-id,Values='$1 | grep NetworkInterfaceId
 }
 
+function s3lastmodified() {
+    # arg is name of a bucket
+    aws s3 ls $1 --recursive | sort | tail -n 1 | cut -d ' ' -f1,2
+}
+
 # Mac
 function uq() {
   # arg is /path/to/file
@@ -203,8 +210,11 @@ function uq() {
 }
 
 # File privleges
-function check_privleges () {
+function checkprivileges () {
   # arg is /path/to/file
   stat -f %A $1
 }
 
+function exportgemfurytoken () {
+    export GEMFURY_TOKEN=$(aws ssm get-parameter --name /gemfury/token --with-decryption --query 'Parameter.Value' --output text)
+}
