@@ -63,6 +63,9 @@ Plugin 'psf/black'
 " Support for repeating plugin commands with .
 Plugin 'tpope/vim-repeat'
 
+" Window swapping with <leader>ww to select, <leader>ww to switch
+Plugin 'wesQ3/vim-windowswap'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 
@@ -265,6 +268,16 @@ nnoremap <Leader>n :noh<CR>
 inoremap jk <esc>
 inoremap jj <esc>:w!<cr>
 
+" TODO: Come up with better shortcut later
+" Only complete from targetted file
+nnoremap <leader>ii :set complete-=i<CR>
+
+" Fast repeat macro
+nnoremap <leader>. @@
+
+" Fast copy to clipboard
+vnoremap <leader>y "*y
+
 " Fast hunk jump
 " Non-recursively remapping seems to break this...
 nmap <Leader>] <Plug>(GitGutterNextHunk)
@@ -277,11 +290,12 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Use easy motion with search
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+" This is actually pretyy disruptive
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
 
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 
 " Save and load folds automatically
 autocmd BufWinLeave *.* mkview

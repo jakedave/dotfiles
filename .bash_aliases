@@ -49,9 +49,13 @@ alias gba="git branch -a"
 alias gpo="git push origin"
 alias ga="git add"
 alias gl="git log"
+alias gcb="git checkout -b"
+
+# RPI
+alias spi="ssh pi@192.168.86.134"
 
 # Arcadia
-alias test="cd ~/Desktop/test"
+alias test="cd ~/Documents/test"
 alias github="cd ~/Documents/Github"
 alias flycatcher="cd ~/Documents/Github/flycatcher"
 alias pocono="cd ~/Documents/Github/pocono-swallow"
@@ -59,6 +63,7 @@ alias nutcracker="cd ~/Documents/Github/nutcracker"
 alias grebe="cd ~/Documents/Github/grebe"
 alias snowflake=" cd ~/Documents/Github/Snowflake"
 
+# TODO: change to redshift dev mode
 function flycatchersetup () {
     # args are nutcracker_branch, ssm_env
     export NUTCRACKER_BRANCH="$1"
@@ -76,10 +81,7 @@ alias vi="vim"
 alias vv="vim ~/.vimrc"
 alias vba="vim ~/.bash_aliases"
 alias vt="vim ~/.tmux.conf"
-
 alias vac="vim ~/.aws/config"
-
-alias vbac="vim ~/.aws/config"
 
 # Python
 alias python="python3"
@@ -88,6 +90,8 @@ alias pip="pip3"
 ## Dependencies
 alias pf="pip3 freeze"
 alias pfr="pip3 freeze > requirements.txt"
+
+alias tr="touch requirements.txt"
 
 ## Venv
 alias venv="python3 -m venv env"
@@ -131,6 +135,8 @@ alias ys="yes | stax"
 alias bes="bundle exec stax"
 alias ybes="yes | bundle exec stax"
 
+alias sbuild="bundle exec stax build codebuild start"
+
 # Bundle
 alias be="bundle exec"
 
@@ -152,8 +158,8 @@ alias arrw="awsrole redshiftwrite"
 function installstax () {
   chruby 2.6.6
   bundle install
-  awsrole $1
-  stax ls
+  # awsrole $1
+  # stax ls
 }
 
 # Weechat
