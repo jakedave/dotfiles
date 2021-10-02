@@ -2,6 +2,7 @@ tap "aws/tap"
 tap "beeftornado/rmtree"
 tap "coinbase/assume-role"
 tap "derailed/k9s"
+tap "fishtown-analytics/dbt"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -50,8 +51,6 @@ brew "helm"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Network authentication protocol
-brew "krb5"
 # Kubernetes command-line interface
 brew "kubernetes-cli", link: false
 # Tool that can switch between kubectl contexts easily and create aliases
@@ -74,12 +73,18 @@ brew "parquet-tools"
 brew "postgresql", restart_service: true
 # Object-relational database system
 brew "postgresql@11"
+# Object-relational database system
+brew "postgresql@12"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Persistent key-value database, with built-in net interface
+brew "redis", restart_service: true
 # Provides fake name and address data
 brew "rig"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
 # Prints a steam locomotive if you type sl instead of ls
@@ -105,6 +110,8 @@ brew "aws/tap/aws-sam-cli"
 brew "coinbase/assume-role/assume-role"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "derailed/k9s/k9s"
+# Data build tool
+brew "fishtown-analytics/dbt/dbt"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # The official CLI for Amazon EKS
