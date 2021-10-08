@@ -43,3 +43,5 @@ export AWS_SESSION_TOKEN_TTL=12h
 export AWS_CHAINED_SESSION_TOKEN_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
+
+eval `keychain --eval --agents ssh --inherit any id_rsa id_rsa_pi`
