@@ -71,6 +71,13 @@ function flycatchersetup () {
     export FLYCATCHER_LOCAL_MODE="true"
 }
 
+function snowflakesetup () {
+    export SNOWFLAKE_USERNAME="JAKEDAVID"
+    export SNOWFLAKE_DEV_MODE="true"
+}
+
+
+
 # Processes
 alias p="ps aux | less"
 
@@ -109,6 +116,15 @@ function venvinstall () {
     then
         pip3 install -r requirements.txt
     fi
+}
+
+function newproject () {
+    mkdir -p $1
+    cd $1
+    touch requirements.txt
+    touch main.py
+    python3 -m venv env
+    source env/bin/activate
 }
 
 # Fun
