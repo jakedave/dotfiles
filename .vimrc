@@ -302,6 +302,7 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 " Run black on file save for all python files
+" fixed by https://github.com/shaoran/black/blob/7152f809c1f47964f1d14e0c6508a2ad414c5cb8/README.md#vim
 autocmd BufWritePre *.py execute ':Black'
 
 " Source vimrc on filechange

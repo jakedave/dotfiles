@@ -51,8 +51,10 @@ alias ga="git add"
 alias gl="git log"
 alias gcb="git checkout -b"
 
+alias pgcm="PRE_COMMIT_ALLOW_NO_CONFIG=1 git commit -m"
+
 # RPI
-alias spi="ssh pi@192.168.86.134"
+alias spi="ssh pi@192.168.86.149"
 
 # Arcadia
 alias test="cd ~/Documents/test"
@@ -61,7 +63,7 @@ alias flycatcher="cd ~/Documents/Github/flycatcher"
 alias pocono="cd ~/Documents/Github/pocono-swallow"
 alias nutcracker="cd ~/Documents/Github/nutcracker"
 alias grebe="cd ~/Documents/Github/grebe"
-alias snowflake=" cd ~/Documents/Github/Snowflake"
+alias snowflake=" cd ~/Documents/Github/snowflake"
 
 # TODO: change to redshift dev mode
 function flycatchersetup () {
@@ -76,6 +78,10 @@ function snowflakesetup () {
     export SNOWFLAKE_DEV_MODE="true"
 }
 
+function makesnowflake () {
+    make init SNOWFLAKE_USERNAME=$1 SANDBOX_SCHEMA=$2
+    make dev-venv
+}
 
 
 # Processes
@@ -172,7 +178,7 @@ alias ardev="awsrole dev-admin"
 alias arrw="awsrole redshiftwrite"
 
 function installstax () {
-  chruby 2.6.6
+  chruby 2.7.0
   bundle install
   # awsrole $1
   # stax ls
