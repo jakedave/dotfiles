@@ -56,32 +56,6 @@ alias pgcm="PRE_COMMIT_ALLOW_NO_CONFIG=1 git commit -m"
 # RPI
 alias spi="ssh pi@192.168.86.149"
 
-# Arcadia
-alias test="cd ~/Documents/test"
-alias github="cd ~/Documents/Github"
-alias flycatcher="cd ~/Documents/Github/flycatcher"
-alias pocono="cd ~/Documents/Github/pocono-swallow"
-alias nutcracker="cd ~/Documents/Github/nutcracker"
-alias grebe="cd ~/Documents/Github/grebe"
-alias snowflake=" cd ~/Documents/Github/snowflake"
-
-# TODO: change to redshift dev mode
-function flycatchersetup () {
-    # args are nutcracker_branch, ssm_env
-    export NUTCRACKER_BRANCH="$1"
-    export SSM_ENV="$2"
-    export FLYCATCHER_LOCAL_MODE="true"
-}
-
-function snowflakesetup () {
-    export SNOWFLAKE_USERNAME="JAKEDAVID"
-    export SNOWFLAKE_DEV_MODE="true"
-}
-
-function makesnowflake () {
-    make init SNOWFLAKE_USERNAME=$1 SANDBOX_SCHEMA=$2
-    make dev-venv
-}
 
 
 # Processes
@@ -89,6 +63,7 @@ alias p="ps aux | less"
 
 # Text Editing
 alias vi="vim"
+alias emacs="emacs -nw"
 
 # Meta
 alias vv="vim ~/.vimrc"
@@ -104,34 +79,13 @@ alias pip="pip3"
 alias pf="pip3 freeze"
 alias pfr="pip3 freeze > requirements.txt"
 
-alias tr="touch requirements.txt"
-
 ## Venv
 alias venv="python3 -m venv env"
 alias svenv="source env/bin/activate"
 alias d="deactivate"
 
-#TODO: Should parameterize env and requirements
-function venvinstall () {
-    if [ ! -d env ]
-    then
-        python3 -m venv env
-    fi
-    source env/bin/activate
-    if [ -f requirements.txt ]
-    then
-        pip3 install -r requirements.txt
-    fi
-}
-
-function newproject () {
-    mkdir -p $1
-    cd $1
-    touch requirements.txt
-    touch main.py
-    python3 -m venv env
-    source env/bin/activate
-}
+# Kubectl
+alias k="kubectl"
 
 # Fun
 alias starwars="telnet towel.blinkenlights.nl"
@@ -150,6 +104,22 @@ function weather () {
 # lolcat                                 # rainbow colors (gem install lolcat)
 # curl http://wttr.in/ann_arbor          # ascii weather report
 
+## Arcadia
+# repos
+alias test="cd ~/Documents/test"
+alias github="cd ~/Documents/Github"
+alias flycatcher="cd ~/Documents/Github/flycatcher"
+alias pocono="cd ~/Documents/Github/pocono-swallow"
+alias nutcracker="cd ~/Documents/Github/nutcracker"
+alias grebe="cd ~/Documents/Github/grebe"
+alias snowflake="cd ~/Documents/Github/snowflake"
+
+# snowflake
+function snowflakesetup () {
+    export SNOWFLAKE_USERNAME="JAKEDAVID"
+    export SNOWFLAKE_DEV_MODE="true"
+}
+
 # Stax
 alias s="stax"
 alias ys="yes | stax"
@@ -167,15 +137,13 @@ alias asr="assume-role"
 alias av="aws-vault"
 
 awsrole () {
-        unset AWS_VAULT
-        eval $(aws-vault exec $1 -- env | grep AWS | sed -e 's/^/export\ /')
-        export AWS_PROFILE=${1} 
-        export DEFAULT_AWS_PROFILE=${1} 
+    unset AWS_AXOLOTL
+    eval $(ax --profile $1 -- env | grep AWS | sed -e 's/^/export\ /')
+    export AWS_PROFILE=${1}
+    export DEFAULT_AWS_PROFILE=${1}
+    export AWS_DEFAULT_REGION=$AWS_REGION
 }
 
-alias ardata="awsrole data-admin"
-alias ardev="awsrole dev-admin"
-alias arrw="awsrole redshiftwrite"
 
 function installstax () {
   chruby 2.7.0
@@ -184,17 +152,6 @@ function installstax () {
   # stax ls
 }
 
-# Weechat
-function wee () {
-    echo 'Virtual environment changed!'
-    source ~/Documents/Common/env/bin/activate
-    # Prefixing with command due to an issue where this function
-    # and the command 'weechat' had the same name.
-    command weechat
-}
-
-# Emacs
-alias emacs="emacs -nw"
 
 # ECR
 function ecrlogin() {

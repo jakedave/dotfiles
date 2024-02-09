@@ -66,6 +66,7 @@ Plugin 'tpope/vim-repeat'
 " Window swapping with <leader>ww to select, <leader>ww to switch
 Plugin 'wesQ3/vim-windowswap'
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 
@@ -254,6 +255,9 @@ nnoremap <Leader>te :tabedit
 " Fast split creation
 nnoremap <Leader>s :sp<CR>
 nnoremap <Leader>v :vsp<CR>
+
+nnoremap <Leader>p :set paste<CR>
+nnoremap <Leader>pp :set nopaste<CR>
 
 " Fast equalize split
 nnoremap <Leader>= <C-W>=
