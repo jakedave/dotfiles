@@ -114,6 +114,8 @@ alias nutcracker="cd ~/Documents/Github/nutcracker"
 alias grebe="cd ~/Documents/Github/grebe"
 alias snowflake="cd ~/Documents/Github/snowflake"
 
+alias fastbin="bin/build all ; bin/deploy all"
+
 # snowflake
 function snowflakesetup () {
     export SNOWFLAKE_USERNAME="JAKEDAVID"

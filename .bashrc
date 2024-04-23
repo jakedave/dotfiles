@@ -29,6 +29,11 @@ if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
+# non-github stuffs
+if [ -f ~/.bash_secret_aliases ]; then
+  source ~/.bash_secret_aliases
+fi
+
 # axotol + starship
 eval "$(ax --completion-script-bash)"
 eval "$(starship init bash)"
