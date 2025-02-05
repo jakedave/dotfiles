@@ -12,8 +12,8 @@ export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 export HISTTIMEFORMAT='%F %T '
 
 # Sourced from https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.zsh
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
-zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 # https://stackoverflow.com/questions/24513873/git-tab-completion-not-working-in-zsh-on-mac
 autoload -Uz compinit && compinit
 
@@ -29,7 +29,7 @@ if [ -f ~/.bash_secret_aliases ]; then
 fi
 
 # axotol + starship
-eval "$(ax --completion-script-bash)"
+eval "$(ax --completion-script-zsh)"
 eval "$(starship init zsh)"
 
 export PYENV_ROOT="$HOME/.pyenv"
