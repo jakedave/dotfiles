@@ -9,6 +9,8 @@
 !.bash_profile
 !.bashrc
 
+!.zshrc
+
 !.inputrc
 
 !.tmux.conf

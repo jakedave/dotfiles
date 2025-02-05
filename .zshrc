@@ -11,14 +11,12 @@ export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 # Show time commands took place in history
 export HISTTIMEFORMAT='%F %T '
 
-# Sourced from https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-if [ -f ~/.git-completion.bash ]; then
-  source ~/.git-completion.bash
-fi
+# Sourced from https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.zsh
+fpath=(~/.zsh $fpath)
+zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
+# https://stackoverflow.com/questions/24513873/git-tab-completion-not-working-in-zsh-on-mac
+autoload -Uz compinit && compinit
 
-if [ -f ~/.dbt-completion.bash ]; then
-  source ~/.dbt-completion.bash
-fi
 
 # Source aliases if exists
 if [ -f ~/.bash_aliases ]; then
@@ -32,7 +30,7 @@ fi
 
 # axotol + starship
 eval "$(ax --completion-script-bash)"
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

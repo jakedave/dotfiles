@@ -55,12 +55,6 @@ alias p="ps aux | less"
 alias vi="vim"
 alias emacs="emacs -nw"
 
-# Meta
-alias vv="vim ~/.vimrc"
-alias vba="vim ~/.bash_aliases"
-alias vt="vim ~/.tmux.conf"
-alias vac="vim ~/.aws/config"
-
 # Python
 alias python="python3"
 alias pip="pip3"
@@ -74,11 +68,22 @@ alias venv="python3 -m venv env"
 alias svenv="source env/bin/activate"
 alias d="deactivate"
 
+# Stax
+alias s="stax"
+alias bes="bundle exec stax"
+
 # Fun
 alias starwars="telnet towel.blinkenlights.nl"
 alias fcow="fortune | cowsay"
 alias parrot="curl parrot.live"
 alias aq="asciiquarium"
+
+# AWS
+alias rax="gimme-aws-creds --register-device"
+
+# DNS
+alias cdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
 
 function weather () {
     curl http://wttr.in/${1}
@@ -91,14 +96,13 @@ function weather () {
 # lolcat                                 # rainbow colors (gem install lolcat)
 # curl http://wttr.in/ann_arbor          # ascii weather report
 
-alias github="cd ~/Documents/Github"
-
-# Stax
-alias s="stax"
-alias bes="bundle exec stax"
+function ssm_get () {
+    aws ssm get-parameter --name "${1}"
+}
 
 function installstax () {
-    chruby 2.7.0
+    RUBY_VERSION=${1-2.7.0}
+    rvm use ${RUBY_VERSION}
     bundle install
 }
 
@@ -106,5 +110,11 @@ function installstax () {
 alias k="kubectl"
 
 function kshell() {
-    kubectl run s --rm -it --image ${1} -- bash
+    kubectl run jd-test --rm -it --image ${1} -- bash
 }
+
+function a_gc() {
+    git clone git@github.com:ArcadiaPower/${1}.git
+}
+
+
